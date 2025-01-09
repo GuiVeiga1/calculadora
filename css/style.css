@@ -13,8 +13,8 @@ footer {
 
 main {
     width: 50vh;
-    height: 70vh;
-    background-color: red;
+    height: 75vh;
+    border:solid 1px;
     margin: auto;
     display: grid;
     border-radius: 5vh;
@@ -36,4 +36,22 @@ section #resposta{
     align-items: end;
 
 }
+
+#buttons {
+    margin:1vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10vh, 1fr)); 
+    justify-items: center;
+    align-items: center; 
+   
+}
+
+section .btn{
+    height: 7vh;
+    width: 10vh;
+    border-radius: 3%;
+    border-radius: 1.5vh; 
+}
+
+
 
