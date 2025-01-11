@@ -56,18 +56,23 @@ botoes.forEach(botao => {
 
 
 botoes[11].addEventListener('click', function () {
-
     let expressao = calculo.innerHTML.replace('=', ''); 
 
-    expressao = expressao.replace('÷', '/');
-    expressao = expressao.replace('×', '*');
+    expressao = expressao.replace(/÷/g, '/');
+    expressao = expressao.replace(/×/g, '*');
 
+    const regex = /^[\d]+(\s*[-+*/]\s*[\d]+)*$/;
+
+    if (!regex.test(expressao)) {
+        alert('Expressão inválida. Verifique os operadores!');
+        return;
+    }
+    
     let resultado = eval(expressao);
-    
     let resultadoFormatado = resultado.toLocaleString('pt-BR'); 
-    
     resposta.innerHTML = resultadoFormatado; 
 });
+
 
 function verifacaSetemIgual(){
    if(calculo.innerHTML.includes('=')){
