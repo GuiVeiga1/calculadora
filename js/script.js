@@ -1,4 +1,6 @@
-let d = document;
+let d = document
+let resposta  = d.querySelector('#resposta')
+let calculo = d.querySelector('#calculo')
 
 let botoes = [
     d.querySelector('#btn_0'),
@@ -18,14 +20,70 @@ let botoes = [
     d.querySelector('#btn_limpar'),
     d.querySelector('#btn_divisao'),
     d.querySelector('#btn_virgula'),
-    d.querySelector('#btn_mais_menos') 
+    d.querySelector('#btn_info') 
 ];
 
 botoes.forEach(botao => {
     botao.addEventListener('click', () => {
-        alert(botao.innerHTML);
+        if(botao.id === "btn_limpar"){
+           limpar();
+        }else{
+            if(botao.id === "btn_info"){
+            
+            }else if(botao.id === "btn_igual"){
+                if(resposta.innerHTML != "0" || calculo.innerHTML == ""){
+                    limpar();
+                }else{
+                    if(verifacaSetemIgual()){
+                      
+                    }else{
+                        calculo.innerHTML += botao.innerHTML
+                    }
+                }
+            }
+            else{
+                if(verifacaSetemIgual()){
+
+                }else{
+                    calculo.innerHTML += botao.innerHTML
+                }
+                
+            }
+        }
     });
+  
 });
+
+
+botoes[11].addEventListener('click', function () {
+
+    let expressao = calculo.innerHTML.replace('=', ''); 
+
+    expressao = expressao.replace('÷', '/');
+    expressao = expressao.replace('×', '*');
+
+    let resultado = eval(expressao);
+    
+    let resultadoFormatado = resultado.toLocaleString('pt-BR'); 
+    
+    resposta.innerHTML = resultadoFormatado; 
+});
+
+function verifacaSetemIgual(){
+   if(calculo.innerHTML.includes('=')){
+        return true
+    }else{
+        return false
+    }
+}
+
+function limpar(){
+    calculo.innerHTML =  ""
+    resposta.innerHTML = "0"
+}
+
+
+
 
 
 
